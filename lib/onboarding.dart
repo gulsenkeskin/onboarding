@@ -8,37 +8,51 @@ class OnboardingPage extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPage> {
+  final controller = PageController();
   @override
-  Widget build(BuildContext context)=> Scaffold(
-    body: Container(
-      padding: const EdgeInsets.only(bottom: 80),
-      child: PageView(
-        children: [
-          Container(
-            color: Colors.red,
-            child: const Center(child: Text("1"),),
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        body: Container(
+          padding: const EdgeInsets.only(bottom: 80),
+          child: PageView(
+            controller: controller,
+            children: [
+              Container(
+                color: Colors.red,
+                child: const Center(
+                  child: Text("1"),
+                ),
+              ),
+              Container(
+                color: Colors.indigo,
+                child: const Center(
+                  child: Text("2"),
+                ),
+              ),
+              Container(
+                color: Colors.green,
+                child: const Center(
+                  child: Text("3"),
+                ),
+              ),
+            ],
           ),
-          Container(
-            color: Colors.indigo,
-            child: const Center(child: Text("2"),),
+        ),
+        bottomSheet: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          height: 80,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(onPressed: () {}, child: const Text('SKIP')),
+              TextButton(onPressed: () {}, child: const Text('NEXT'))
+            ],
           ),
-          Container(
-            color: Colors.green,
-            child: const Center(child: Text("3"),),
-          ),
-        ],
-      ),
-    ),
-    bottomSheet: Container(
-      padding: const EdgeInsets.symmetric(horizontal:4 ),
-      height: 80,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TextButton(onPressed: (){}, child: const Text('SKIP')),
-          TextButton(onPressed: (){}, child: const Text('NEXT'))
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 }
