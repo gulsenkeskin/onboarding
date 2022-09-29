@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:onboarding/home_page.dart';
 import 'package:onboarding/onboarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final prefs = await SharedPreferences.getInstance();
+  final showHome = prefs.getBool('showHome') ?? false;
+
+  runApp(MyApp(showHome: showHome));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool showHome;
+  const MyApp({super.key, required this.showHome});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnboardingPage(),
+      home: showHome ? const HomePage() : const OnboardingPage(),
     );
   }
 }
-
