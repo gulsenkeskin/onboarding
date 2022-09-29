@@ -51,9 +51,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
-                  onPressed: () => controller.previousPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut),
+                  onPressed: () => controller.jumpToPage(2),
                   child: const Text('SKIP')),
               Center(
                 child: SmoothPageIndicator(
