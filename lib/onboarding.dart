@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding/home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -48,17 +49,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
         bottomSheet: isLastPage
             ? TextButton(
                 onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setBool('showHome', true);
+
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const HomePage()));
                 },
-                child: const Text(
+                child: Text(
                   'Get Started',
                   style: TextStyle(fontSize: 24),
                 ),
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    primary: Colors.white,
+                        borderRadius: BorderRadius.circular(2)),
+                    foregroundColor: Colors.white,
                     backgroundColor: Colors.blueGrey,
                     minimumSize: const Size.fromHeight(80)),
               )
