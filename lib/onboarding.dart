@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -49,8 +50,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(onPressed: () {}, child: const Text('SKIP')),
-              TextButton(onPressed: () {}, child: const Text('NEXT'))
+              TextButton(onPressed: ()=> controller.previousPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut), child: const Text('SKIP')),
+              Center(child: SmoothPageIndicator(
+                controller:controller,
+                count:3,
+                effect: WormEffect(
+                  spacing: 16,
+                  dotColor: Colors.black26,
+                  activeDotColor: Colors.teal.shade700
+                ),
+              ),),
+              TextButton(onPressed: ()=> controller.nextPage(duration: const Duration(milliseconds: 500), curve: Curves.easeInOut), child: const Text('NEXT'))
             ],
           ),
         ),
