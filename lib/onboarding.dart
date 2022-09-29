@@ -29,5 +29,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
         ],
       ),
     ),
+    bottomSheet: Container(
+      padding: const EdgeInsets.symmetric(horizontal:4 ),
+      height: 80,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          TextButton(onPressed: (){}, child: const Text('SKIP')),
+          TextButton(onPressed: (){}, child: const Text('NEXT'))
+        ],
+      ),
+    ),
   );
 }
