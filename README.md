@@ -1,4 +1,7 @@
 # onboarding
+
+<img src='assets/1.png' width="360" height="680"/><img src='assets/2.png' width="360" height="680"/><img src='assets/3.png' width="360" height="680"/>
+
 <img src='ss/1.gif' width="360" height="680"/>
 
  
